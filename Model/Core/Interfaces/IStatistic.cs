@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model.Data
+namespace Model.Core
 {
     public interface IStatistic
     {

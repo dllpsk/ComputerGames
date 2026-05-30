@@ -1,13 +1,12 @@
-﻿using System;
+﻿using Model.Core;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Newtonsoft.Json;
-using Model.Core;
-using Newtonsoft.Json.Linq;
 
 namespace Model.Data
 {
-    public class JsonSerializer : Serializer
+    public class JsonSerialization : Serialization<List<Game>>
     {
         public override void Serialize(string filePath, List<Game> games)
         {
@@ -29,6 +28,7 @@ namespace Model.Data
             }
             File.WriteAllText(filePath, jsonObject.ToString());
         }
+
         public override List<Game> Deserialize(string filePath)
         {
             List<Game> games = new List<Game>();
@@ -50,15 +50,15 @@ namespace Model.Data
                 Game game = null;
                 if (type == "Single")
                 {
-                    game = new SingleGame(title, genre, ageRating, releaseDate, rating, imageURL));
+                    game = new SingleGame(title, genre, ageRating, releaseDate, rating, imageURL);
                 }
                 else if (type == "Multiplayer")
                 {
-                    game = new MultiplayerGame(title, genre, ageRating, releaseDate, rating, imageURL));
+                    game = new MultiplayerGame(title, genre, ageRating, releaseDate, rating, imageURL);
                 }
                 else if (type == "Online")
                 {
-                    game = new OnlineGame(title, genre, ageRating, releaseDate, rating, imageURL));  
+                    game = new OnlineGame(title, genre, ageRating, releaseDate, rating, imageURL);
                 }
                 if (game != null) games.Add(game);
             }

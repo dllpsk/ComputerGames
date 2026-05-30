@@ -15,6 +15,14 @@ namespace Model.Core
                 _games.Add(game);
             }
         }
+        public void Add(IEnumerable<Game> games)
+        {
+            if (games == null) return;
+            foreach (var game in games)
+            {
+                Add(game);
+            }
+        }
         public void Remove(Game game)
         {
             if (game != null && _games.Exists(g => g.Title == game.Title))

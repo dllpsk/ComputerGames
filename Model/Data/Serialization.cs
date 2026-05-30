@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Model.Data
 {
-    public abstract class Serializer
+    public abstract class Serialization<T> 
     {
         public abstract void Serialize(string filePath, List<Game> games);
         public abstract List<Game> Deserialize(string filePath);
