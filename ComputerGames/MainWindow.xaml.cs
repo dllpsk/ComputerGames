@@ -69,8 +69,7 @@ namespace ComputerGames
                 string format = selectedFormatItem?.Content?.ToString()?.ToLower() ?? "json";
                 selectFileFormat = format;
 
-                string catalogFile = System.IO.Path.Combine(selectFolderPath, $"catalog.{format}");
-                _catalog.SaveToFile(catalogFile, format);
+                _catalog.InitializeCatalogPath(selectFolderPath, format);
             }
         }
 

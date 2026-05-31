@@ -22,7 +22,8 @@ namespace Model.Data
                     { "ReleaseDate", game.ReleaseDate.ToString("yyyy-MM-dd") },
                     { "Rating", game.Rating },
                     { "ImageURL", game.ImageURL },
-                    { "Type", game.GameMode }
+                    { "Type", game.GameMode },
+                    { "Description", game.Description }
                 };
                 jsonObject.Add(jsonGame);
             }
@@ -46,19 +47,20 @@ namespace Model.Data
                 double rating = double.Parse(jsonGame["Rating"]?.ToString() ?? "0");
                 string imageURL = jsonGame["ImageURL"]?.ToString();
                 string type = jsonGame["Type"]?.ToString();
+                string description = jsonGame["Description"]?.ToString() ?? "";
 
                 Game game = null;
                 if (type == "Single")
                 {
-                    game = new SingleGame(title, genre, ageRating, releaseDate, rating, imageURL);
+                    game = new SingleGame(title, genre, ageRating, releaseDate, rating, imageURL, description);
                 }
                 else if (type == "Multiplayer")
                 {
-                    game = new MultiplayerGame(title, genre, ageRating, releaseDate, rating, imageURL);
+                    game = new MultiplayerGame(title, genre, ageRating, releaseDate, rating, imageURL, description);
                 }
                 else if (type == "Online")
                 {
-                    game = new OnlineGame(title, genre, ageRating, releaseDate, rating, imageURL);
+                    game = new OnlineGame(title, genre, ageRating, releaseDate, rating, imageURL, description);
                 }
                 if (game != null) games.Add(game);
             }

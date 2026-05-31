@@ -14,6 +14,7 @@ namespace Model.Data
         public double Rating { get; set; }
         public string ImageURL { get; set; }
         public string Type { get; set; }
+        public string Description { get; set; }
 
         public DTOGame() { }
         public DTOGame(Game game)
@@ -25,6 +26,7 @@ namespace Model.Data
             Rating = game.Rating;
             ImageURL = game.ImageURL;
             Type = game.GameMode;
+            Description = game.Description;
         }
     }
 }

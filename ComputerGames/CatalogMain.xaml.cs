@@ -33,12 +33,18 @@ namespace ComputerGames
         {
             InitializeComponent();
 
-            PlatformCombox.ItemsSource = _catalog.SortGames(_catalog.GetAllGames());
-            MaxBlock.Text = ListGame.MaxRating(ListGame.GetAllGames()).ToString("F2");
-            MinBlock.Text = ListGame.MinRating(ListGame.GetAllGames()).ToString("F2");
-            SrBlock.Text = ListGame.AverageRating(ListGame.GetAllGames()).ToString("F2");
-            MidBlock.Text = ListGame.MedianRating(ListGame.GetAllGames()).ToString("F2");
+            //FolderPath = MainWindow.selectFolderPath;
             _typefile = MainWindow.selectFileFormat;
+
+            // Инициализируем каталог с загрузкой существующих данных, если файл есть
+            string catalogFile = System.IO.Path.Combine(FolderPath, $"catalog.{_typefile}");
+            _catalog.InitializeCatalogPath(FolderPath, _typefile);
+
+            PlatformCombox.ItemsSource = _catalog.SortGames(_catalog.GetAllGames());
+            MaxBlock.Text = _catalog.MaxRating(_catalog.GetAllGames()).ToString("F2");
+            MinBlock.Text = _catalog.MinRating(_catalog.GetAllGames()).ToString("F2");
+            SrBlock.Text = _catalog.AverageRating(_catalog.GetAllGames()).ToString("F2");
+            MidBlock.Text = _catalog.MedianRating(_catalog.GetAllGames()).ToString("F2");
         }
 
         private void ChoiseGame(object sender, SelectionChangedEventArgs e)
@@ -72,19 +78,19 @@ namespace ComputerGames
             if (!string.IsNullOrEmpty(Platform) && Platform != "Выберите вариант..." && Platform != "Все")
             {
                 Games = _catalog.SortPlatform(Games, Platform);
-                MaxBlock.Text = ListGame.MaxRating(Games).ToString("F2");
-                MinBlock.Text = ListGame.MinRating(Games).ToString("F2");
-                SrBlock.Text = ListGame.AverageRating(Games).ToString("F2");
-                MidBlock.Text = ListGame.MedianRating(Games).ToString("F2");
+                MaxBlock.Text = _catalog.MaxRating(Games).ToString("F2");
+                MinBlock.Text = _catalog.MinRating(Games).ToString("F2");
+                SrBlock.Text = _catalog.AverageRating(Games).ToString("F2");
+                MidBlock.Text = _catalog.MedianRating(Games).ToString("F2");
             }
 
             if (Mode != "Выберите вариант...")
             {
                 Games = _catalog.SortMode(Games, Mode);
-                MaxBlock.Text = ListGame.MaxRating(Games).ToString("F2");
-                MinBlock.Text = ListGame.MinRating(Games).ToString("F2");
-                SrBlock.Text = ListGame.AverageRating(Games).ToString("F2");
-                MidBlock.Text = ListGame.MedianRating(Games).ToString("F2");
+                MaxBlock.Text = _catalog.MaxRating(Games).ToString("F2");
+                MinBlock.Text = _catalog.MinRating(Games).ToString("F2");
+                SrBlock.Text = _catalog.AverageRating(Games).ToString("F2");
+                MidBlock.Text = _catalog.MedianRating(Games).ToString("F2");
             }
 
             PlatformCombox.ItemsSource = Games;
