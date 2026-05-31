@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerGames"
         mc:Ignorable="d"
-        Title="Game info" Height="450" Width="800">
+        Title="Game info" Height="550" Width="900">
     <Grid Margin="20">
 
         <Grid.ColumnDefinitions>
@@ -13,8 +13,13 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
         <Border Grid.Column="0"
+                Grid.Row="0"
                     CornerRadius="15"
                     BorderBrush="#D1D5DB"
                     BorderThickness="2">
@@ -25,6 +30,7 @@
 
         <!-- Информация -->
         <StackPanel Grid.Column="1"
+                    Grid.Row="0"
                         Margin="25,0,0,0">
 
             <TextBlock x:Name="TitleBlock"
@@ -78,6 +84,28 @@
             </Border>
 
         </StackPanel>
+
+        <!-- Описание игры -->
+        <Border Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Grid.Row="1"
+                Background="#F3F4F6"
+                CornerRadius="10"
+                Padding="15"
+                Margin="0,20,0,0">
+            <StackPanel>
+                <TextBlock Text="Описание:"
+                           Foreground="#1F2937"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,10"/>
+                <TextBlock x:Name="DescriptionBlock"
+                           Foreground="#374151"
+                           FontSize="14"
+                           TextWrapping="Wrap"
+                           LineHeight="20"/>
+            </StackPanel>
+        </Border>
 
     </Grid>
 </Window>

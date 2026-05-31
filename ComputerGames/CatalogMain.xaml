@@ -64,20 +64,6 @@
                         </ComboBox>
                     </StackPanel>
 
-                    <StackPanel Margin="40,0">
-                        <TextBlock Text="Формат сохранения"
-                               Foreground="White"
-                               FontWeight="SemiBold"/>
-                        <ComboBox Name="Loading_file"
-                              Width="200"
-                              Height="35"
-                              SelectionChanged="FilterGames">
-                            <ComboBoxItem IsSelected="True" IsEnabled="False">Выберите вариант...</ComboBoxItem>
-                            <ComboBoxItem>XML</ComboBoxItem>
-                            <ComboBoxItem>JSON</ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-
                 </StackPanel>
 
             </StackPanel>

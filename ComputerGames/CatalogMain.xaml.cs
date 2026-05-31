@@ -38,7 +38,7 @@ namespace ComputerGames
             MinBlock.Text = ListGame.MinRating(ListGame.GetAllGames()).ToString("F2");
             SrBlock.Text = ListGame.AverageRating(ListGame.GetAllGames()).ToString("F2");
             MidBlock.Text = ListGame.MedianRating(ListGame.GetAllGames()).ToString("F2");
-            _typefile = "JSON";
+            _typefile = MainWindow.selectFileFormat;
         }
 
         private void ChoiseGame(object sender, SelectionChangedEventArgs e)
@@ -53,14 +53,6 @@ namespace ComputerGames
                 return;
             }
 
-            string folder = FolderPath;
-            string format = _typefile ?? "JSON";
-            string fmt = format.ToLower();
-
-            string catalogFile = System.IO.Path.Combine(folder, $"catalog.{fmt}");
-            _catalog.SaveToFile(catalogFile, fmt);
-            
-
             GameInfoWindow window = new GameInfoWindow(_selectedGame);
             window.Show();
         }
@@ -74,7 +66,6 @@ namespace ComputerGames
 
             // Получаем выбранные значения в виде строк
             // PlatformSort.SelectedItem  - элемент который на данный момент выбран Content? - то что хранит платформа
-            _typefile = (Loading_file.SelectedItem as ComboBoxItem)?.Content?.ToString();
             string Platform = (PlatformSort.SelectedItem as ComboBoxItem)?.Content?.ToString();  
             string Mode = (RejimSort.SelectedItem as ComboBoxItem)?.Content?.ToString();
 
@@ -112,10 +103,10 @@ namespace ComputerGames
 
             if (!string.IsNullOrEmpty(FolderPath))
             {
-                if (string.IsNullOrEmpty(_typefile)) _typefile = "json";
+                string format = MainWindow.selectFileFormat ?? "json";
 
-                string currentSavePath = System.IO.Path.Combine(FolderPath, $"catalog.{_typefile}");
-                _catalog.SaveToFile(currentSavePath, _typefile);
+                string currentSavePath = System.IO.Path.Combine(FolderPath, $"catalog.{format}");
+                _catalog.SaveToFile(currentSavePath, format);
             }
 
             List<Game> updatedGames = _catalog.SortGames(_catalog.GetAllGames());

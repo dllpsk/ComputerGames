@@ -23,6 +23,8 @@ namespace ComputerGames
     {
 
         public static string selectFolderPath;
+        public static string selectFileFormat;
+        private Model.Core.GameCatalog _catalog = new Model.Core.GameCatalog();
 
         public MainWindow()
         {
@@ -35,6 +37,7 @@ namespace ComputerGames
         static MainWindow()
         {
             selectFolderPath = "не выбрана";
+            selectFileFormat = "json";
         }
         private void Goto_Catalog(object sender, RoutedEventArgs e)
         {
@@ -54,13 +57,20 @@ namespace ComputerGames
         }
         private void LoadingPathClick(object sender, RoutedEventArgs e)
         {
-            // создаем окно выбора папки
+
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             // dialog.ShowDialog()  - открываем проводник и далее проверяем нажал ли пользователь ок
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
             {
                 SavePath.Text = "выбрана";
-                selectFolderPath = dialog.SelectedPath; // сохраняем путь файла который мы выбрали 
+                selectFolderPath = dialog.SelectedPath;  
+
+                var selectedFormatItem = FileFormatSelect.SelectedItem as ComboBoxItem;
+                string format = selectedFormatItem?.Content?.ToString()?.ToLower() ?? "json";
+                selectFileFormat = format;
+
+                string catalogFile = System.IO.Path.Combine(selectFolderPath, $"catalog.{format}");
+                _catalog.SaveToFile(catalogFile, format);
             }
         }
 

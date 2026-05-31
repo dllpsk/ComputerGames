@@ -29,6 +29,7 @@ namespace ComputerGames
             AgeBlock.Text = $"Возраст: {game.AgeRating}+";
             ReleaseBlock.Text = $"Дата выхода: {game.ReleaseDate:dd.MM.yyyy}";
             ModeBlock.Text = $"Тип: {game.GameMode}";
+            DescriptionBlock.Text = game.Description;
 
             try
             {

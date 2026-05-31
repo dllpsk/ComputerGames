@@ -65,20 +65,22 @@ namespace ComputerGames
                 ? "https://static3.depositphotos.com/1000635/120/i/450/depositphotos_1208368-stock-photo-white-paper-seamless-background.jpg"
                 : TxtImage.Text.Trim();
 
+            string description = TxtDescription.Text.Trim() ?? "";
+
             string selectedType = (CmbType.SelectedItem as ComboBoxItem)?.Content?.ToString();
 
             Game newGame = null;
             if (selectedType == "Single")
             {
-                newGame = new SingleGame(TxtTitle.Text.Trim(), TxtGenre.Text.Trim(), age, releaseDate, rating, imageUrl);
+                newGame = new SingleGame(TxtTitle.Text.Trim(), TxtGenre.Text.Trim(), age, releaseDate, rating, imageUrl, description);
             }
             else if (selectedType == "Multiplayer")
             {
-                newGame = new MultiplayerGame(TxtTitle.Text.Trim(), TxtGenre.Text.Trim(), age, releaseDate, rating, imageUrl);
+                newGame = new MultiplayerGame(TxtTitle.Text.Trim(), TxtGenre.Text.Trim(), age, releaseDate, rating, imageUrl, description);
             }
             else if (selectedType == "Online")
             {
-                newGame = new OnlineGame(TxtTitle.Text.Trim(), TxtGenre.Text.Trim(), age, releaseDate, rating, imageUrl);
+                newGame = new OnlineGame(TxtTitle.Text.Trim(), TxtGenre.Text.Trim(), age, releaseDate, rating, imageUrl, description);
             }
 
             if (newGame != null)
@@ -98,6 +100,7 @@ namespace ComputerGames
                 TxtAge.Clear();
                 TxtRating.Clear();
                 TxtImage.Clear();
+                TxtDescription.Clear();
                 DpRelease.SelectedDate = DateTime.Now;
 
                 RefreshTable();

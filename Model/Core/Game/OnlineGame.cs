@@ -10,8 +10,8 @@ namespace Model.Core
         public string GetPlatformName() => "PC, Mobile";
 
         public OnlineGame() { }
-        public OnlineGame(string title, string genre, int ageRating, DateTime releaseDate, double rating, string imageURL)
-            : base(title, genre, ageRating, releaseDate, rating, imageURL) { }
+        public OnlineGame(string title, string genre, int ageRating, DateTime releaseDate, double rating, string imageURL, string description = "")
+            : base(title, genre, ageRating, releaseDate, rating, imageURL, description) { }
 
     }
 }

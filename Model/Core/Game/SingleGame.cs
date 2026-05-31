@@ -10,7 +10,7 @@ namespace Model.Core
         public string GetPlatformName() => "PC, Console";
 
         public SingleGame() { }
-        public SingleGame(string title, string genre, int ageRating, DateTime releaseDate, double rating, string imageURL)
-            : base(title, genre, ageRating, releaseDate, rating, imageURL) { }
+        public SingleGame(string title, string genre, int ageRating, DateTime releaseDate, double rating, string imageURL, string description = "")
+            : base(title, genre, ageRating, releaseDate, rating, imageURL, description) { }
     }
 }

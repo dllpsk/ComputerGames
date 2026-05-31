@@ -12,10 +12,11 @@ namespace Model.Core
         public DateTime ReleaseDate { get; set; }
         public double Rating { get; set; }
         public string ImageURL { get; set; }
+        public string Description { get; set; }
         public abstract string GameMode { get; }
 
         protected Game() { }
-        protected Game(string title, string genre, int ageRating, DateTime releaseDate, double rating, string imageURL)
+        protected Game(string title, string genre, int ageRating, DateTime releaseDate, double rating, string imageURL, string description)
         {
             Title = title;
             Genre = genre;
@@ -23,6 +24,7 @@ namespace Model.Core
             ReleaseDate = releaseDate;
             Rating = rating;
             ImageURL = imageURL;
+            Description = description;
         }
         // Перегрузка операторов > и < для сравнения названий игр по алфавиту
         public static bool operator >(Game g1, Game g2)
