@@ -1,4 +1,4 @@
-﻿using Model.Core;
+using Model.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -45,15 +45,15 @@ namespace Model.Data
 
                 if (dto.Type == "Single")
                 {
-                    game = new SingleGame(dto.Title, dto.Genre, dto.AgeRating, dto.ReleaseDate, dto.Rating, dto.ImageURL);
+                    game = new SingleGame(dto.Title, dto.Genre, dto.AgeRating, dto.ReleaseDate, dto.Rating, dto.ImageURL, dto.Description ?? "");
                 }
                 else if (dto.Type == "Multiplayer")
                 {
-                    game = new MultiplayerGame(dto.Title, dto.Genre, dto.AgeRating, dto.ReleaseDate, dto.Rating, dto.ImageURL);
+                    game = new MultiplayerGame(dto.Title, dto.Genre, dto.AgeRating, dto.ReleaseDate, dto.Rating, dto.ImageURL, dto.Description ?? "");
                 }
                 else if (dto.Type == "Online")
                 {
-                    game = new OnlineGame(dto.Title, dto.Genre, dto.AgeRating, dto.ReleaseDate, dto.Rating, dto.ImageURL);
+                    game = new OnlineGame(dto.Title, dto.Genre, dto.AgeRating, dto.ReleaseDate, dto.Rating, dto.ImageURL, dto.Description ?? "");
                 }
                 if (game != null) games.Add(game);
             }
