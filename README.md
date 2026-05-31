@@ -126,5 +126,7 @@ GameInfo — окно подробной информации об игре.
 ⸻
 
 Разработчики
+
 https://github.com/dllpsk
+
 https://github.com/liza-127
