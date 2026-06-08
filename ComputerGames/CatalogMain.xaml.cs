@@ -24,7 +24,6 @@ namespace ComputerGames
     {
 
         private GameCatalog _catalog = new GameCatalog();
-        private GameCatalog ListGame = new GameCatalog();
         private string FolderPath = MainWindow.selectFolderPath;
         private string _typefile = "";
         private Game _selectedGame;
@@ -121,10 +120,10 @@ namespace ComputerGames
 
             PlatformCombox.ItemsSource = updatedGames;
 
-            MaxBlock.Text = ListGame.MaxRating(updatedGames).ToString("F2");
-            MinBlock.Text = ListGame.MinRating(updatedGames).ToString("F2");
-            SrBlock.Text = ListGame.AverageRating(updatedGames).ToString("F2");
-            MidBlock.Text = ListGame.MedianRating(updatedGames).ToString("F2");
+            MaxBlock.Text = _catalog.MaxRating(updatedGames).ToString("F2");
+            MinBlock.Text = _catalog.MinRating(updatedGames).ToString("F2");
+            SrBlock.Text = _catalog.AverageRating(updatedGames).ToString("F2");
+            MidBlock.Text = _catalog.MedianRating(updatedGames).ToString("F2");
         }
     }
 }
